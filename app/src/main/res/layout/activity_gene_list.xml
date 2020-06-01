@@ -46,13 +46,13 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_over_all"
+            android:id="@+id/gene_list_recycler_view_over_all"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_category"
+            android:id="@+id/gene_list_recycler_view_category"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"  />
