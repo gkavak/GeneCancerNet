@@ -2,18 +2,23 @@ package com.guvenkavak.genecancernet.model
 
 import java.io.Serializable
 
-class Category (private val _categoryName:String,private val _categoryNo:Int,private val _accuaricy:Float):
+class Category ():
     Serializable {
+    constructor(_categoryName:String, _categoryNo:Int, _accuracy:Float) : this() {
+        categoryName=_categoryName
+        categoryNo=_categoryNo
+        accuracy1=_accuracy
+    }
     var id:String=""
-    var categoryName:String=_categoryName
-    var accuracy1:Float=_accuaricy
-    var categoryNo:Int=_categoryNo
+    var categoryName:String=""
+    var accuracy1:Float = 0.0f
+    var categoryNo:Int=0
     var description:String=""
-    var geneCount:Int =0
 
     override fun toString(): String {
         return this.categoryName
     }
+
     object Contract
     {
         var id="id"

@@ -1,5 +1,6 @@
 package com.guvenkavak.genecancernet.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,17 +8,21 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.guvenkavak.genecancernet.R
 import com.guvenkavak.genecancernet.model.Category
+import com.guvenkavak.genecancernet.model.ColorClass
 
-class CategoryAdapter(val categoryArray:ArrayList<Category>) : RecyclerView.Adapter<CategoryAdapter.PostHolder>() {
+class CategoryAdapter(val categoryArray:ArrayList<Category>,val colorArray:ArrayList<ColorClass>) : RecyclerView.Adapter<CategoryAdapter.PostHolder>() {
 
     class PostHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
         val category_list_row_lbl_category_name: TextView = itemView.findViewById<TextView>(R.id.category_list_row_lbl_category_name)
         val category_list_row_lbl_accuracy: TextView = itemView.findViewById<TextView>(R.id.category_list_row_lbl_accuracy)
+        val category_list_row_lbl_category_count: TextView = itemView.findViewById<TextView>(R.id.category_list_row_lbl_category_count)
+
 
         fun bindItems(item: Category) {
             category_list_row_lbl_category_name.text= item.categoryName
             category_list_row_lbl_accuracy.text= item.accuracy1.toString()
+            category_list_row_lbl_category_count.text= "Category No ( ${item.categoryNo} )"
         }
     }
 
@@ -31,6 +36,7 @@ class CategoryAdapter(val categoryArray:ArrayList<Category>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: PostHolder, position: Int) {
+        holder.itemView.setBackgroundColor(Color.parseColor(colorArray.get(position).hexCode))
         holder.bindItems(categoryArray[position])
     }
 }
