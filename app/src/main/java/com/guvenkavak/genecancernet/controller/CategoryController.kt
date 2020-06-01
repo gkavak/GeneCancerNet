@@ -1,5 +1,6 @@
 package com.guvenkavak.genecancernet.controller
 
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
@@ -9,16 +10,16 @@ import com.google.firebase.ktx.Firebase
 import com.guvenkavak.genecancernet.model.Category
 import com.guvenkavak.genecancernet.model.ColorClass
 
-class CategoryController {
+class CategoryController () {
     val colorClassArrayList=ArrayList<ColorClass>()
     fun insertColorClass() :ArrayList<ColorClass> {
         //Cat No : 1
         colorClassArrayList.clear()
-        colorClassArrayList.add(ColorClass(1,0,"#3b5998"))
-        colorClassArrayList.add(ColorClass(1,1,"#8b9dc3"))
-        colorClassArrayList.add(ColorClass(1,2,"#dfe3ee"))
-        colorClassArrayList.add(ColorClass(1,3,"#f7f7f7"))
-        colorClassArrayList.add(ColorClass(1,4,"#ffffff"))
+        colorClassArrayList.add(ColorClass(1,0,"#c99789"))
+        colorClassArrayList.add(ColorClass(1,1,"#dfa290"))
+        colorClassArrayList.add(ColorClass(1,2,"#e0a899"))
+        colorClassArrayList.add(ColorClass(1,3,"#fce9db"))
+        colorClassArrayList.add(ColorClass(1,4,"#ffe9dc"))
 
         //Cat No : 2
         colorClassArrayList.add(ColorClass(2,0,"#ffe0bd"))
@@ -49,8 +50,8 @@ class CategoryController {
         colorClassArrayList.add(ColorClass(7,2,"#43e8d8"))
 
         //Cat No : 8
-        colorClassArrayList.add(ColorClass(8,0,"#ff0000"))
-        colorClassArrayList.add(ColorClass(8,1,"#bf0000"))
+        colorClassArrayList.add(ColorClass(8,0,"#d2d4dc"))
+        colorClassArrayList.add(ColorClass(8,1,"#afafaf"))
 
         //Cat No : 9
         colorClassArrayList.add(ColorClass(9,0,"#a3c1ad"))
