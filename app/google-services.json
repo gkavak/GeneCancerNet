@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "470221948312",
+    "firebase_url": "https://cancer-gene.firebaseio.com",
+    "project_id": "cancer-gene",
+    "storage_bucket": "cancer-gene.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470221948312:android:df59bff79d06bc1a8a97ed",
+        "android_client_info": {
+          "package_name": "com.guvenkavak.cancergeneonline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470221948312-5ad8eskmt7sv38okm9sls1fbarmq7286.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD8rskudtX__Ohih-0CIxKeZVnbpsP8dE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470221948312-5ad8eskmt7sv38okm9sls1fbarmq7286.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470221948312:android:a9c02eedeffc116e8a97ed",
+        "android_client_info": {
+          "package_name": "com.guvenkavak.genecancernet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470221948312-5ad8eskmt7sv38okm9sls1fbarmq7286.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD8rskudtX__Ohih-0CIxKeZVnbpsP8dE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470221948312-5ad8eskmt7sv38okm9sls1fbarmq7286.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
