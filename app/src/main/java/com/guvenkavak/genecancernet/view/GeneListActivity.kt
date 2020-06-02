@@ -56,7 +56,7 @@ class GeneListActivity : AppCompatActivity() {
             )
         )
 
-        Toast.makeText(this, "Clicked: ${categoryItem.categoryName}", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "Clicked: ${categoryItem.categoryName}", Toast.LENGTH_SHORT).show()
         lbl_category_name.text = categoryItem.categoryName + " ( ${categoryItem.categoryNo} )"
         val df = DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH))
         df.setMaximumFractionDigits(340)

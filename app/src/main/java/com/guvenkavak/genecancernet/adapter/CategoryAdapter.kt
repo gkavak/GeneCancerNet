@@ -11,6 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.guvenkavak.genecancernet.R
 import com.guvenkavak.genecancernet.model.Category
 import com.guvenkavak.genecancernet.model.ColorClass
+import kotlinx.android.synthetic.main.activity_gene_list.*
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class CategoryAdapter(
@@ -44,7 +49,9 @@ class CategoryAdapter(
 
         fun bindItems(item: Category, position:Int,clickListener: (Category,Int) -> Unit) {
             category_list_row_lbl_category_name.text = item.categoryName
-            category_list_row_lbl_accuracy.text = item.accuracy1.toString()
+            val df = DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH))
+            df.maximumFractionDigits = 340
+            category_list_row_lbl_accuracy.text = df.format(item.accuracy1)
             category_list_row_lbl_category_count.text = "Category No ( ${item.categoryNo} )"
             itemView.setOnClickListener { clickListener(item,position) }
         }
