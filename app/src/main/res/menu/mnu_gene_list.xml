@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/mnu_share_over_all_content" android:title="Share Over All Content"></item>
+    <item android:id="@+id/mnu_share_category_content" android:title="Share Category Content"></item>
+</menu>

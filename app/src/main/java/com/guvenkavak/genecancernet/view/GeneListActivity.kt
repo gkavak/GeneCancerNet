@@ -5,6 +5,8 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Adapter
 import android.widget.TextView
@@ -22,7 +24,6 @@ import com.guvenkavak.genecancernet.controller.CategoryController
 import com.guvenkavak.genecancernet.model.Category
 import com.guvenkavak.genecancernet.model.Gene
 import kotlinx.android.synthetic.main.activity_gene_list.*
-import kotlinx.android.synthetic.main.activity_gene_list.progressBar
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
@@ -41,12 +42,12 @@ class GeneListActivity : AppCompatActivity() {
     var adapterGeneOverall = GeneOverallAdapter(
         overAllGeneList
     ) { gene -> geneItemClicked(gene) }
-
+    var positionItem:Int=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gene_list)
         val categoryItem: Category = intent.getSerializableExtra("CategoryItem") as Category
-        val positionItem: Int = intent.getIntExtra("PositionItem", 0)
+        positionItem= intent.getIntExtra("PositionItem", 0)
         val someView: View = findViewById<TextView>(R.id.lbl_category_name)
         val root: View = someView.rootView
         root.setBackgroundColor(
@@ -61,8 +62,6 @@ class GeneListActivity : AppCompatActivity() {
         df.setMaximumFractionDigits(340)
         lbl_accuaricy.text = df.format(categoryItem.accuracy1)
 
-        progressBar.visibility = View.VISIBLE
-
         getCategoryData(categoryItem, adapterGeneCategory)
         getOverallData(categoryItem, adapterGeneOverall)
 
@@ -76,10 +75,11 @@ class GeneListActivity : AppCompatActivity() {
     }
 
     private fun geneItemClicked(gene: Gene) {
-        Toast.makeText(this, "Clicked: ${gene.geneCode}", Toast.LENGTH_SHORT).show()
-        /*val intent = Intent(this@GeneListActivity, GeneDetailActivity::class.java)
+        //Toast.makeText(this, "Clicked: ${gene.geneCode}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this@GeneListActivity, GeneDetailActivity::class.java)
         intent.putExtra("GeneItem",gene)
-        startActivity(intent)*/
+        intent.putExtra("PositionItem",positionItem)
+        startActivity(intent)
     }
 
     private fun getCategoryData(category: Category, adapter: GeneCategoryAdapter) {
@@ -96,8 +96,8 @@ class GeneListActivity : AppCompatActivity() {
                             val gene = item.toObject(Gene::class.java) as Gene
                             categoryGeneList.add(gene)
                         }
-                        progressBar.visibility = View.INVISIBLE
                         adapter.notifyDataSetChanged()
+                        gene_list_lbl_category.text="Category ( " + categoryGeneList.size + " )"
                     }
                 })
     }
@@ -115,9 +115,54 @@ class GeneListActivity : AppCompatActivity() {
                             val gene = item.toObject(Gene::class.java) as Gene
                             overAllGeneList.add(gene)
                         }
-                        progressBar.visibility = View.INVISIBLE
                         adapter.notifyDataSetChanged()
+                        gene_list_lbl_overall.text="Overall ( " + overAllGeneList.size + " )"
                     }
                 })
     }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.mnu_gene_list,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if(item.itemId==R.id.mnu_share_over_all_content){
+            var exportText:String=""
+            for (gene in overAllGeneList)
+            {
+                exportText+="${gene.geneCode} \t ${gene.scoreOverAll}\n"
+            }
+            val sendIntent = Intent()
+            sendIntent.action = Intent.ACTION_SEND
+            sendIntent.putExtra(Intent.EXTRA_TEXT, exportText)
+            sendIntent.type = "text/plain"
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+        }else if(item.itemId==R.id.mnu_share_category_content){
+
+            var exportText:String=""
+
+            for (gene in categoryGeneList)
+            {
+                exportText+="${gene.geneCode} \t ${gene.scoreByCategory}\n"
+            }
+
+            val sendIntent = Intent()
+            sendIntent.action = Intent.ACTION_SEND
+            sendIntent.putExtra(Intent.EXTRA_TEXT, exportText)
+            sendIntent.type = "text/plain"
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+        }
+        /*
+        }else {
+                ActivityCompat.requestPermissions(this,
+                    arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), RECORD_REQUEST_CODE)
+        }*/
+        return super.onOptionsItemSelected(item)
+    }
+
 }
