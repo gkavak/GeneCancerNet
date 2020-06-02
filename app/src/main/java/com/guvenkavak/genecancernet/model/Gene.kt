@@ -2,11 +2,11 @@ package com.guvenkavak.genecancernet.model
 
 import java.io.Serializable
 
-data class Gene (private val _geneCode:String): Serializable {
-    var id:Int = 0
+class Gene() : Serializable {
+    var id:String =""
     var geneId:String=""
     var categoryNo:Int=0
-    var categoryId:Int=0
+    var categoryId:String=""
     var geneSumName:String=""
     var geneName:String=""
     var summary:String=""
@@ -43,11 +43,11 @@ data class Gene (private val _geneCode:String): Serializable {
         }
     }
 
-    constructor(_geneCode: String,_scoreOverAll:Float) : this(_geneCode) {
+    constructor(_geneCode: String,_scoreOverAll:Float) : this() {
         this.geneCode=_geneCode
         this.scoreOverAll=_scoreOverAll
     }
-    constructor(_geneCode: String,_scoreOverAll:Float,_scoreByCategory:Float) : this(_geneCode) {
+    constructor(_geneCode: String,_scoreOverAll:Float,_scoreByCategory:Float) : this() {
         this.geneCode=_geneCode
         this.scoreOverAll=_scoreOverAll
         this.scoreByCategory=_scoreByCategory
